@@ -1,0 +1,15 @@
+Executable : /home/mvanwelie/Android/Sdk/cmake/3.6.3155560/bin/cmake
+arguments : 
+-H/home/mvanwelie/megabits/android/facechanger-android/FaceChanger/app
+-B/home/mvanwelie/megabits/android/facechanger-android/FaceChanger/app/.externalNativeBuild/cmake/release/x86
+-GAndroid Gradle - Ninja
+-DANDROID_ABI=x86
+-DANDROID_NDK=/home/mvanwelie/Android/Sdk/ndk-bundle
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/home/mvanwelie/megabits/android/facechanger-android/FaceChanger/app/build/intermediates/cmake/release/obj/x86
+-DCMAKE_BUILD_TYPE=Release
+-DCMAKE_MAKE_PROGRAM=/home/mvanwelie/Android/Sdk/cmake/3.6.3155560/bin/ninja
+-DCMAKE_TOOLCHAIN_FILE=/home/mvanwelie/Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-DANDROID_NATIVE_API_LEVEL=23
+-DCMAKE_CXX_FLAGS=-std=c++11
+jvmArgs : 
+
