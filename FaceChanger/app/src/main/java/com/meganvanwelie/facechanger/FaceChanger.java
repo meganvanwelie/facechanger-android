@@ -1,10 +1,9 @@
 package com.meganvanwelie.facechanger;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
 
-public class FaceChanger extends AppCompatActivity {
+public class FaceChanger extends Activity {
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -15,10 +14,16 @@ public class FaceChanger extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_changer);
+        if (null == savedInstanceState) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.activity_face_changer, CameraFragment.newInstance())
+                    .commit();
+        }
 
         // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+        //TextView tv = (TextView) findViewById(R.id.sample_text);
+        //tv.setText(stringFromJNI());
+
     }
 
     /**
