@@ -18,6 +18,8 @@ public class FaceChanger extends Activity {
             getFragmentManager().beginTransaction()
                     .replace(R.id.activity_face_changer, CameraFragment.newInstance())
                     .commit();
+
+
         }
 
         // Example of a call to a native method

@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
+import android.support.v13.app.FragmentCompat;
 import android.content.DialogInterface;
 import android.media.Image;
 import android.os.Bundle;

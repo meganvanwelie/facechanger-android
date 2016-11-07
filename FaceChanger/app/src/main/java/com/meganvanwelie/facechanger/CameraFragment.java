@@ -2,6 +2,7 @@ package com.meganvanwelie.facechanger;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -25,7 +26,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import android.support.v13.app.FragmentCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Size;
@@ -144,13 +145,12 @@ public class CameraFragment extends Fragment
     }
 
     private void requestCameraPermission() {
-        /*
-        if (shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+        if (FragmentCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
             new CameraHelper.ConfirmationDialog().show(getChildFragmentManager(), FRAGMENT_DIALOG);
         } else {
-        */
-        requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
-        //}
+            FragmentCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
+                    REQUEST_CAMERA_PERMISSION);
+        }
     }
 
     @Override
@@ -506,7 +506,7 @@ public class CameraFragment extends Fragment
                             if (afState == null) {
                                 captureStillPicture();
                             } else if (CaptureResult.CONTROL_AF_STATE_FOCUSED_LOCKED == afState ||
-                                        CaptureResult.CONTROL_AF_STATE_NOT_FOCUSED_LOCKED == afState) {
+                                       CaptureResult.CONTROL_AF_STATE_NOT_FOCUSED_LOCKED == afState) {
                                 // CONTROL_AE_STATE can be null on some devices
                                 Integer aeState = result.get(CaptureResult.CONTROL_AE_STATE);
                                 if (aeState == null ||
@@ -532,7 +532,8 @@ public class CameraFragment extends Fragment
                         case STATE_WAITING_NON_PRECAPTURE: {
                             Integer aeState = result.get(CaptureResult.CONTROL_AE_STATE);
                             // CONTROL_AE_STATE can be null on some devices
-                            if (aeState == null || aeState != CaptureResult.CONTROL_AE_STATE_PRECAPTURE) {
+                            if (aeState == null ||
+                                    aeState != CaptureResult.CONTROL_AE_STATE_PRECAPTURE) {
                                 mState = STATE_PICTURE_TAKEN;
                                 captureStillPicture();
                             }

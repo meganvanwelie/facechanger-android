@@ -1,15 +1,8 @@
 package com.meganvanwelie.facechanger;
 
 import android.content.Context;
-import android.hardware.camera2.CameraDevice;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.TextureView;
-
-import java.io.IOError;
-import java.io.IOException;
 
 public class CameraTextureView extends TextureView {
 
