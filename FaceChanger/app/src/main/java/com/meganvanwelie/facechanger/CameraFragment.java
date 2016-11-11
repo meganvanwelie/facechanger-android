@@ -336,8 +336,7 @@ public class CameraFragment extends Fragment
     private void openCamera(int width, int height) {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-            //requestCameraPermission();
-            Log.e(TAG, "Camera does not have permissions");
+            requestCameraPermission();
             return;
         }
         setUpCameraOutputs(width, height);
