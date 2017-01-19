@@ -1,0 +1,116 @@
+
+<html>
+<head>
+<title> CS585: Face Changer for Android </title>
+<style>
+<!--
+body{
+font-family: 'Trebuchet MS', Verdana;
+}
+p{
+font-family: 'Trebuchet MS', Times;
+margin: 10px 10px 15px 20px;
+}
+h3{
+margin: 5px;
+}
+h2{
+margin: 10px;
+}
+h1{
+margin: 10px 0px 0px 20px;
+}
+div.main-body{
+align:center;
+margin: 30px;
+}
+hr{
+margin:20px 0px 20px 0px;
+}
+-->
+</style>
+</head>
+
+<body>
+<center>
+<a href="http://www.bu.edu"><img border="0" src="http://www.cs.bu.edu/fac/betke/images/bu-logo.gif"
+width="119" height="120"></a>
+</center>
+
+<h1>FaceChanger for Android</h1>
+<p>
+ CS 585 - Final Project <br>
+ Date: October 8, 2016
+</p>
+
+<div class="main-body">
+<hr>
+<h2> Problem Definition </h2>
+<p>
+An open source, face swapping and morphing application for Android, which is explored as a platform for face tracking, orientation alignment, and image blending.
+</p>
+<!--Give a concise description of current problem. For instance, what
+needs to be solved and why it is useful?  Do you make any assumptions?
+What are the difficulties? -->
+
+<hr>
+<h2> Motivation </h2>
+The primary motivation for choosing this project was to serve as a platform for exploring orientation alignment, face detection, and image blending. However, a secondary motivation was the opportunity to develop a base project for developing Android based computer vision projects.
+
+<hr>
+<h2> Results</h2>
+Sample output results are included below. Though my target goal for the project was a fully functioning Android application, I was unable to fully achieve this. I am still having issues integrating the C++ code into an APK project. With that said, I have developed an application which successfully face swaps using different blending techniques from a desktop platform.
+
+Though I experimented with several techniques, the ones that resulted in the most visually appealing outputs were saved as the final options. Namely, the final implementation makes use of a linear systems of equation solution for the transformation matrix and Poisson image blending for the final clone.
+
+<figure>
+<img src="imgs/1.png" alt="Face Swap Results" >
+<img src="imgs/2.png" alt="Face Swap Results" >
+<img src="imgs/3.png" alt="Face Swap Results" >
+<img src="imgs/4.png" alt="Face Swap Results" >
+<img src="imgs/5.png" alt="Face Swap Results" >
+<img src="imgs/6.png" alt="Face Swap Results" >
+<img src="imgs/7.png" alt="Face Swap Results" >
+<img src="imgs/8.png" alt="Face Swap Results" >
+<img src="imgs/faceswap.gif" alt="Face Swap Results" >
+<figcaption>Face Swap Results</figcaption>
+</figure>
+<figure>
+<img src="imgs/blended.png" alt="Image blend via Gaussian and Laplacian Pyramids" >
+<figcaption>Image blend via Gaussian and Laplacian Pyramids</figcaption>
+</figure>
+
+<hr>
+<h2> Discussion </h2>
+Due to the nature of the application, I did not complete a formal results analysis, such as through a confusion matrix. Instead, I relied on an informal judgment on the quality of the swap to motivate changes.
+The final GIF shown relies on OpenCV's implementation of seamlessClone. Though the results look acceptable, there are several factors which could result in a large improvement. Primarily, I believe a decrease in processing time, and thus an increase in the smoothness of the processed video would be beneficial. In an attempt to reduce processing time I reduced the number of points used to determine orientation alignment to only three key points: both eyes and the chin. However, a lot of the believability of the swap is still lost in the lag and jitter of the swapped faces. Additionally, though the image blend does look better than a hard clone, there is a jumping in the lighting conditions of the face which are distracting. I would like to do a custom implementation to better understand the limitations of the algorithm and potentially correct for any unique processing OpenCV has implemented. Finally, I struggled to implement a working image blend based on Gaussian and Laplacian pyramids. I believe that my theory is correct, but the resulting image appears slightly soft and the cloned area maintains rigid edges.<br><br>
+I believe that an inclusion of some sort of tracking prediction would have potential to decrease processing time and increase the stability of the swap. For example, if an algorithm, such as Kalman filtering were added, the location of the faces between frames could be estimated. If a similar filtering technique were applied to the full orientation of the face, and not just the position, then greater stability between frames could be achieved as any outlier movements could be smoothed by averaging across the predicted and measured positions. Furthermore, with this estimation, a smaller area around the face could be used for face detection and thus processing time could be decreased.<br><br>
+Overall, though there are several improvements described that I would like to make given more time, I believe that I have implemented a passable face swap which allowed me to explore my intended goals.
+<hr>
+<h2> Credits and Bibliography </h2>
+<!-- Credit any joint work or discussions with your classmates. -->
+OpenCV Documentation<br>
+Dlib Documentation<br>
+http://www.ipol.im/pub/art/2016/163/<br>
+http://www.learnopencv.com/face-swap-using-opencv-c-python/<br>
+https://www.youtube.com/watch?v=UcTJDamstdk&t=2281s<br>
+
+Kazemi, Vahid, and Josephine Sullivan. "One millisecond face
+alignment with an ensemble of regression trees."
+Proceedings of the IEEE Conference on Computer Vision and Pattern
+Recognition. 2014. <br>
+
+Pérez, Patrick, Michel Gangnet, and Andrew Blake. "Poisson
+image editing." ACM Transactions on Graphics (TOG). Vol. 22.
+No. 3. ACM, 2003.<br>
+
+Horn, Berthold KP. "Closed-form solution of absolute
+orientation using unit quaternions." JOSA A 4.4 (1987):
+629-642. <br>
+
+
+<p>
+
+</div>
+</body>
+</html>
