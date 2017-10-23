@@ -1,0 +1,48 @@
+
+<html>
+<head>
+<title> Face Changer for Android</title>
+</head>
+
+<body>
+<center>
+<a href="http://www.bu.edu"><img border="0" src="http://www.cs.bu.edu/fac/betke/images/bu-logo.gif"
+width="119" height="120"></a>
+</center>
+
+<h1>Face Changer for Android</h1>
+
+<div class="main-body">
+<hr>
+<h2> Problem Definition </h2>
+<p>
+This project will begin as a face swapping application on Android. If time permits, I will expand it to add additional filters and processing affects that can be applied to live video feedback from the Android's front facing camera. The project will be open-source and open-license and will be available on Github for future expansion.
+</p>
+
+<h2>Resources and Potential Techniques</h2>
+<p>
+There are two primary challenge of this project: facial recognition and orientation alignment. Though the facial recognition aspect is self-evident, the need for orientation alignment may be less obvious. Once two faces are recognized, in order to produce reasonable and convincing face-swapping results, they will need to be aligned to the orientation of their respective target faces. At this time, I believe that the landmark based 2D orientation detection using unit quaternions from Horn 1987 and described in class in a reasonable algorithm for accomplishing this. For facial landmark detection, I may begin by using the dlib c++ toolkit, which includes a robust implementation for faces looking directly at the camera. I would like to do additional research into methods for more sophisticated methods of facial landmark detection, but based on what we have learned so far I may consider implementing my own version based on template matching or a similar technique. Finally, I believe that the swapped faces would benefit from histogram normalization to the target face so that the face colors are in closer alignment with the surrounding skin of the target.
+</p>
+<p>
+
+</p>
+
+
+<h2>Mockup of Input and Results</h2>
+<figure>
+<img src="imgs/hc_selfie.png" style="width:250;height:250;">
+<img src="imgs/hc_selfie_face_swap.png" style="width:250;height:250;">
+<figcaption>Mockup of input image (left) and result of face swap (result)</figcaption>
+</figure>
+
+<h2>Progress</h2>
+<p>
+Currently, I have developed a base Android project that accesses the video stream from the front camera. I have also setup the project such that native C++ code can be used for the image processing. This will allow cross compatibility for the primary technical component of the project. Additionally, I have researched the previously described techniques and am ready to begin implementing the necessary algorithms.
+</p>
+<p>
+All current work can be found here: <a href="https://github.com/meganvanwelie/facechanger-android/tree/master/FaceChanger">https://github.com/meganvanwelie/facechanger-android/tree/master/FaceChanger</a>.
+</p>
+
+</div>
+</body>
+</html>
